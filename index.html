@@ -22,7 +22,7 @@
 						<div class="content">
 							<div class="inner">
 								<h1>솔직히, 수업 안듣고 구글링 하잖아요?</h1>
-								<p>"Crawling searcing history of Google, doing Natural language processing, 
+								<p>"Crawling searcing history of Google, doing Natural language processing,<br>
 									extracting keywords, and providing software about news, that is based on our keywords."</p>
 							</div>
 						</div>
@@ -32,11 +32,9 @@
 							</ul>
 						</nav>
 
-						<form method="POST">
-							<p id="input_keyword">
-								<input type="text" name="keyword" placeholder="Keyword" required>
-								<input type="submit" onclick="search_URL(keyword)" value="search">
-							</p>
+						<form method="POST" id="input_keyword" action="search.html">
+							<input type="text" name="keyword" placeholder="Keyword" required>
+							<input type="submit" onclick="search_URL(keyword)" value="search">
 						</form>
 					</header>
 
