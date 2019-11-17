@@ -180,7 +180,7 @@ input, select, textarea {
 		margin: 2em 0 2em 0;
 	}
 
-	input[type="text"] {
+	#search_text {
 		background: rgba(144, 144, 144, 0.075);
 		border-radius: 4px;
 		border: solid 1px white;
@@ -191,11 +191,7 @@ input, select, textarea {
 		height: 2.75em;
 	}
 
-		input[type="text"]:invalid {
-			box-shadow: none;
-		}
-
-		input[type="text"]:focus {
+		#search_text:focus {
 			border-color: #6bd4c8;
 		}
 

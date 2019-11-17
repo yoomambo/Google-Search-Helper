@@ -8,16 +8,6 @@
 		$main = $('#main'),
 		$main_articles = $main.children('article');
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
-
 	// Play initial animations on page load.
 		$window.on('load', function() {
 			window.setTimeout(function() {
@@ -56,9 +46,6 @@
 					// Already locked? Speed through "show" steps w/o delays.
 						if (locked || (typeof initial != 'undefined' && initial === true)) {
 
-							// Mark as switching.
-								$body.addClass('is-switching');
-
 							// Mark as visible.
 								$body.addClass('is-article-visible');
 
@@ -78,11 +65,6 @@
 
 							// Unlock.
 								locked = false;
-
-							// Unmark as switching.
-								setTimeout(function() {
-									$body.removeClass('is-switching');
-								}, (initial ? 1000 : 0));
 
 							return;
 
@@ -188,9 +170,6 @@
 					// Already locked? Speed through "hide" steps w/o delays.
 						if (locked) {
 
-							// Mark as switching.
-								$body.addClass('is-switching');
-
 							// Deactivate article.
 								$article.removeClass('active');
 
@@ -207,9 +186,6 @@
 
 							// Unlock.
 								locked = false;
-
-							// Unmark as switching.
-								$body.removeClass('is-switching');
 
 							// Window stuff.
 								$window

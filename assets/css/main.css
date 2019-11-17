@@ -110,7 +110,7 @@ mark {
 		line-height: 1.65;
 	}
 
-	input[type="submit"] {
+	#search_button {
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		background-color: transparent;
 		border-radius: 4px;
@@ -128,24 +128,21 @@ mark {
 		white-space: nowrap;
 	}
 
-	input[type="text"] {
+	#search_text {
 		background: rgba(144, 144, 144, 0.075);
 		border-radius: 4px;
 		border: solid 1px white;
 		color: white;
 		outline: 0;
 		padding: 0 1em;
+		margin: 0 0 0.5rem 0;
 		text-decoration: none;
 		width: 80%;
 		height: 3rem;
 		font-size: 0.8rem;
 	}
 
-		input[type="text"]:invalid {
-			box-shadow: none;
-		}
-
-		input[type="text"]:focus {
+		#search_text:focus {
 			border-color: #6bd4c8;
 		}
 
@@ -834,7 +831,7 @@ mark {
 			text-transform: uppercase;
 		}
 
-		body.is-article-visible #footer {
+		body.article-visible #footer {
 			transform: scale(0.95);
 			filter: blur(0.1rem);
 			opacity: 0;

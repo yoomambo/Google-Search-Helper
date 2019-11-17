@@ -1,15 +1,10 @@
 <!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Software Festival</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="css/main.css" type="text/css"/>
 		
 	</head>
 	<body class="is-preload">
@@ -32,9 +27,9 @@
 							</ul>
 						</nav>
 
-						<form method="POST" id="input_keyword" action="search.html">
-							<input type="text" name="keyword" placeholder="Keyword" required>
-							<input type="submit" onclick="search_URL(keyword)" value="search">
+						<form method="GET" id="input_keyword" action="search">
+							<input type="text" id="search_text" name="keyword" placeholder="Input Keyword" required>
+							<input type="submit" id="search_button">
 						</form>
 					</header>
 
@@ -42,7 +37,8 @@
 					<div id="main">
 						<!-- Intro -->
 							<article id="intro">
-								<h2 class="major">Intro</h2>
+								<h2 class="major">Introduction</h2>
+								
 							</article>
 					</div>
 
@@ -57,10 +53,9 @@
 			<div id="bg"></div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/search.js"></script>
+			<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script src="js/main_jquery.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
 	</body>
 </html>
