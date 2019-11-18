@@ -24,6 +24,15 @@
 		<!-- Main -->
 		<section id="main">
 			
+		<!-- EJS -->
+		<%	for(var i = 0; i < data.length; i++){ %>
+			<div class="result">
+				<header class="major">
+					<h2><a href=<%=data[i]['url']%> > <%=data[i]['title']%></a></h2>
+				</header>
+				<p><%=data[i]['detail']%></p>
+			</div>
+		<%	} %>
 		</section>
 
 		<!-- Footer -->
@@ -32,6 +41,7 @@
 				<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</section>
+
 
 		<!-- Scripts -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
