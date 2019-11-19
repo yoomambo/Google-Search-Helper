@@ -22,7 +22,7 @@ user_name = sys.argv[1]
 
 # user가 word input
 user_input_word = input('여기에 단어를 입력하세요 : ')
-
+input_number = input('여기에 숫자를 입력하세요 : ')
 # RegexTokenizer's object 생성
 tokenizer = RegexTokenizer()
 
@@ -97,46 +97,71 @@ def print_None(input_word):
     user_input_word_split_plus = "+".join(user_input_word_split)
     data = [{'title':"I'm very sorry.....", "url":"https://www.google.com/search?q="+user_input_word_split_plus ,"detail":"요청하신 단어에 관한 유사 검색 결과가 존재하지 않습니다. Google site를 링크해드립니다."}]
     # print(data)
-    print(json.dumps(data))
+    print(json.dumps(data,ensure_ascii=False))
 
-while True:
+for i in range(int(input_number)+1):
     # 단어가 모두 있는 경우 json으로 출력
     if len(result_token_all)!= 0:
         result_change_dict = print_json(result_token_all)
-        print('all data : ')
-        print(json.dumps(result_change_dict))
-        break
-    # 3개이상 없는 경우 2개이상으로 선택
+        if i  == 0:
+            print('all data : ')
+            print(json.dumps(result_change_dict,ensure_ascii=False))
+        else:
+            print(str(i) +" missed count's data : ")
+            print(json.dumps(result_change_dict,ensure_ascii=False))
+            
+    # 단어가 모두 있는 경우가 아니라면 
     elif len(result_token_all) == 0:
+        # 만약 다음 단계로 넘어가는 list의 개수가 0개라면 그 전 list의 개수는 한개이므로, break
         if len(final_token_list)-1 == 0:
             print_None(user_input_word)
             break
-        c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-1)+ " ORDER BY user_count asc")
+    
+    c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-(i+1))+ " ORDER BY user_count asc")
+    result_token_all = c1.fetchall()
+    
+# while True:
+#     # 단어가 모두 있는 경우 json으로 출력
+#     if len(result_token_all)!= 0:
+#         result_change_dict = print_json(result_token_all)
+#         print('all data : ')
+#         print(json.dumps(result_change_dict,ensure_ascii=False))
         
-    # 단어 하나 빠진 경우
-    result_token_1 = c1.fetchall()
+#     # 단어가 모두 있는 경우가 아니라면 
+#     elif len(result_token_all) == 0:
+#         # 만약 다음 단계로 넘어가는 list의 개수가 0개라면 그 전 list의 개수는 한개이므로, break
+#         if len(final_token_list)-1 == 0:
+#             print_None(user_input_word)
+#             break
+    
+#     c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-1)+ " ORDER BY user_count asc")
+        
+#     # 단어 하나 빠진 경우
+#     result_token_1 = c1.fetchall()
 
-    # 2개이상 있는 경우 json으로 출력
-    if len(result_token_1) != 0:
-        result_change_dict = print_json(result_token_1)
-        print('one data missed! : ')
-        print(json.dumps(result_change_dict))
-        break
-    # 2개이상 없는 경우, 단어 하나만 보고 판단하기 힘듬, 1개나 겹치는 단어 없는 경우, 구글을 보여줌
-    else:
-        if len(final_token_list)-2 == 0:
-            print_None(user_input_word)
-            break
-        c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-2)+ " ORDER BY user_count asc")
+#     # 단어 하나 빠진 경우가 있다면 json으로 출력
+#     if len(result_token_1) != 0:
+#         result_change_dict = print_json(result_token_1)
+#         print('one data missed! : ')
+#         print(json.dumps(result_change_dict,ensure_ascii=False))
 
-    # 단어 두개 빠진 경우
-    result_token_2 = c1.fetchall()
-    # 2개이상 있는 경우 json으로 출력
-    if len(result_token_2) != 0:
-        result_change_dict = print_json(result_token_2)
-        print('two data missed! : ')
-        print(json.dumps(result_change_dict))
-        break
-    # 2개이상 없는 경우, 단어 하나만 보고 판단하기 힘듬, 1개나 겹치는 단어 없는 경우, 구글을 보여줌
-    else:
-        print_None(user_input_word)
+#     # 단어 하나 빠진 경우가 없는 경우, 단어 2개 빠진 경우를 보여줌
+#     else:
+#         # -2를 한경우가 0이라면, 전 list는 단어를 2개만 가지고 있다는 것, 멈춘다
+#         if len(final_token_list)-2 == 0:
+#             print_None(user_input_word)
+#             break
+#     c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-2)+ " ORDER BY user_count asc")
+
+#     # 단어 두개 빠진 경우
+#     result_token_2 = c1.fetchall()
+#     # 2개이상 있는 경우 json으로 출력
+#     if len(result_token_2) != 0:
+#         result_change_dict = print_json(result_token_2)
+#         print('two data missed! : ')
+#         print(json.dumps(result_change_dict,ensure_ascii=False))
+#         break
+#     # 2개이상 없는 경우, 단어 하나만 보고 판단하기 힘듬, 1개나 겹치는 단어 없는 경우, 구글을 보여줌
+#     else:
+#         print_None(user_input_word)
+
