@@ -23,7 +23,7 @@ def search(dirname):
     """
     result = []
     for filename in dirname:
-        if filename[-3:] == '.py' or filename[-3:] =='.db' or filename[-3:] =='e__':
+        if filename[-3:] == '.py' or filename[-3:] =='.db' or filename[-3:] =='e__' or filename[-3:] =='.sh':
             pass
         else:
             result.append(filename)

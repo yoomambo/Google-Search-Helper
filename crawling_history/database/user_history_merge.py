@@ -14,10 +14,10 @@ import token_word_judge
 # user들의 directory list
 user_dir_list = os.listdir()
 user_only_dir_list = token_word_judge.search(user_dir_list)
-print(user_only_dir_list)
+# print(user_only_dir_list)
 # user dir마다 반복
 for user_dir in user_only_dir_list:
-    print(user_dir)
+    # print(user_dir)
     # history_user_dir_address
     history_user_dir_address = user_dir+ "/History_" + user_dir + '.db'
 
