@@ -1,0 +1,10 @@
+여러분의 OS, 운영체제에 맞춰서 아래 History가 있는 파일 경로를 복사, 선택해줍니다.
+
+※ (user_name) 은 여러분의 컴퓨터 이름입니다. ※
+
+windows :C:/Users/(user_name)/AppData/Local/Google/Chrome/User Data/Default/History
+
+linux : ~/.config/google-chrome/Default/History
+
+MAC OS : ~/Library/Application Support/Google/Chrome/Default/History
+
