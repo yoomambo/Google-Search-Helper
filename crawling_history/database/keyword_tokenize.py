@@ -101,18 +101,10 @@ for i in range(len(final_token_list)+1):
     # 단어가 모두 있는 경우 json으로 출력
     if len(result_token_all) != 0:
         result_change_dict = print_json(result_token_all)
-        # 첫 시작이 아닐경우
-        if i != 0 :
-            column = str(i) +" missed count's data"
-            result_change_dict_missed_data = {str(i) +" missed count's data" : result_change_dict}
-            count_number +=1
-            print(json.dumps(result_change_dict_missed_data,ensure_ascii=False))
-        # 첫 시작인 경우
-        else:
-            column = 'all data'
-            result_change_dict_all_data = {'all data' : result_change_dict}
-            count_number +=1
-            print(json.dumps(result_change_dict_all_data,ensure_ascii=False))
+        result_change_dict_missed_data = {'count' : i ,'list': result_change_dict}
+        count_number +=1
+        print(json.dumps(result_change_dict_missed_data,ensure_ascii=False))
+    
             
     # 단어가 모두 있는 경우가 아니라면 
     elif len(result_token_all) == 0:
