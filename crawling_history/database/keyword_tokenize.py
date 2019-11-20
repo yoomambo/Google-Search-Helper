@@ -54,13 +54,13 @@ final_token_list = token_word_judge.google_translator(new_token_list)
 # 한글도 명사만 존재하는 list
 # print(final_token_list)
 
-conn1 = sqlite3.connect('./History_all_users_title_token.db')
+conn1 = sqlite3.connect('../crawling_history/database/History_all_users_title_token.db')
 
 c1 = conn1.cursor()
 
 # 비교할 username의 최근 History를 모든 user들의 history와 비교하기 위해 임시로 attach
-c1.execute("ATTACH '" + os.getcwd()+ "/" + user_name+"/History' as History_"+user_name+"_temp;")
-c1.execute("ATTACH '" + os.getcwd()+ "/History_all_users.db' as History_all_users_temp;")
+c1.execute("ATTACH '" + "../crawling_history/database/" + user_name + "/History' as History_" + user_name + "_temp;")
+c1.execute("ATTACH '" + "../crawling_history/database/History_all_users.db' as History_all_users_temp;")
 
 # username의 history가 있다면 이를 제거한 모든 user들의 history data들의 결과
 result = []
@@ -81,17 +81,28 @@ result_token_all = c1.fetchall()
 # list를 json으로 출력해주는 함수
 def print_json(result):
     columns = ['title', 'url', 'user_count', 'visit_count']
-    change_dict= []
+    change_dict_list= []
     for result_line in result:
         # crawling_url = result_line[1]
         # print(crawling_url)
         change_dict = dict(zip(columns, result_line))
-    return change_dict
+        change_dict_list.append(change_dict)
+    return change_dict_list
 
 def print_None(input_word):
     user_input_word_split = input_word.split(' ')
     user_input_word_split_plus = "+".join(user_input_word_split)
-    data = [{'title':"I'm very sorry.....", "url":"https://www.google.com/search?q="+user_input_word_split_plus ,"detail":"요청하신 단어에 관한 유사 검색 결과가 존재하지 않습니다. Google site를 링크해드립니다."}]
+    data =  {
+                "count" : -1,
+                "list": [
+                    {
+                        "title":"요청하신 단어에 관한 유사 검색 결과가 존재하지 않습니다. Google site를 링크해드립니다.",
+                        "url":"https://www.google.com/search?q="+user_input_word_split_plus,
+                        "user_count" : 0,
+                        "visit_count": 0
+                    }
+                ]
+            }
     # print(data)
     print(json.dumps(data,ensure_ascii=False))
 

@@ -18,9 +18,9 @@ from soynlp.tokenizer import RegexTokenizer
 import token_word_judge
 
 # title token으로 나누기 전 db
-conn = sqlite3.connect('./History_all_users.db')
+conn = sqlite3.connect('../crawling_history/database/History_all_users.db')
 # title token으로 나눈 후 db
-conn2 = sqlite3.connect('./History_all_users_title_token.db')
+conn2 = sqlite3.connect('../crawling_history/database/History_all_users_title_token.db')
 
 # cursor 생성
 c = conn.cursor()
