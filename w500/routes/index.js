@@ -7,8 +7,8 @@ let { PythonShell } = require('python-shell');
 
 const storage = multer.diskStorage({ 
   destination(req, file, callback) {
-    var user = req.session.passport.user.displayName
-    callback(null, __dirname + '/../public/uploads/' + user); 
+    var user = req.session.passport.user.displayName;
+    callback(null, __dirname + '/../../crawling_history/database/' + user);
   }, 
   filename(req, file, callback) {
     callback(null, file.originalname); 
@@ -27,15 +27,14 @@ router.get('/', function(req, res, next) {
 
 router.post('/', auth.ensureAuthenticated, upload.array('FILE_TAG', 1), function(req, res, next) {
   var filename = req.files[0].filename;
-  if(filename == 'test.py'){
+  if(filename == 'History'){
     var options = {
       mode: 'json',
-      pythonOptions: ['-u'],
-      args: [req.session.passport.user.displayName]
+      pythonOptions: ['-u']
     }
 
     sync.fiber(function(){
-      var results = sync.await(PythonShell.run("./public/python/test.py", options, sync.defer()));
+      sync.await(PythonShell.run( __dirname + "../../../crawling_history/database/history_2_pd_db.py", options, sync.defer()));
     });
     res.redirect('/search');
   }

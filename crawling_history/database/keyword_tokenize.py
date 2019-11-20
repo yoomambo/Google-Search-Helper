@@ -52,7 +52,7 @@ final_token_list = token_word_judge.google_translator(new_token_list)
 #         pass
 
 # 한글도 명사만 존재하는 list
-print(final_token_list)
+# print(final_token_list)
 
 conn1 = sqlite3.connect('./History_all_users_title_token.db')
 
