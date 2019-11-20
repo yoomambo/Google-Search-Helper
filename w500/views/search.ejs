@@ -24,15 +24,16 @@
 		<!-- Main -->
 		<section id="main">
 			
-		<!-- EJS -->
-		<%	for(var i = 0; i < data.length; i++){ %>
-			<div class="result">
-				<header class="major">
-					<h2><a href=<%=data[i]['url']%> > <%=data[i]['title']%></a></h2>
-				</header>
-				<p><%=data[i]['detail']%></p>
-			</div>
-		<%	} %>
+			<!-- EJS -->
+			<%	for(var i = 0; i < data.length; i++){ %>
+				<div class="result">
+					<header class="major">
+						<h2><a href=<%=data[i]['url']%> > <%=data[i]['title']%></a></h2>
+					</header>
+					<p><%=data[i]['detail']%></p>
+				</div>
+			<%	} %>
+
 		</section>
 
 		<!-- Footer -->

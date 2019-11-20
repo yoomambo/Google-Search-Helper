@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Software Festival</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="stylesheets/main.css" type="text/css"/>
+		
+	</head>
+	<body class="is-preload">
+		<script language="JavaScript" type="text/JavaScript">
+			var err = <%= error %>;
+			if(err)
+				alert('파일 경로를 확인해주세요.');
+		</script>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="content">
+							<div class="inner">
+								<h1>솔직히, 구글링 맨날 하잖아요</h1>
+								<p>"Crawling searcing history of Google, doing Natural language processing,<br>
+									extracting keywords, and providing software about news, that is based on our keywords."</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">Intro</a></li>
+								<li><a href="/auth/google">Start</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Introduction</h2>
+								<p>우리는 이 웹 페이지를 통해 <strong>집단지성</strong>을 추구할 수 있습니다.</p>
+								<p>이 웹페이지는 여러분들의 크롬검색엔진을 통해 검색한 History를 분석하여,<br>
+									다른 user들의 History와 비교합니다.<br>
+									이 과정을 통해, 자신이 방문하지 않았던 URL을 보여줌으로써 
+									미쳐 알지 못한 정보를 서로 공유할 수 있게 됩니다.
+								</p>
+								<p>
+									검색 방법:
+									<ol class="howto">
+										<li>start 버튼을 눌러, google 계정으로 로그인을 진행합니다.</li>
+										<li>자신의 History 파일을 업데이트합니다.</li>
+										<li>원하는 단어를 입력합니다</li>
+									</ol>
+									입력할 때 조사를 빼주시면 성능이 더욱 좋아집니다. <br>
+									예시) python을 windows에 설치하기 -> python windows 설치
+								</p>
+							</article>
+
+						<!-- Start -->
+						<article id="start">
+							<h2 class="major">Notice</h2>
+							<p>
+								여러분의 OS, 운영체제에 맞춰서 아래 History가 있는 파일 경로를 복사, 선택해줍니다.
+								<p style="margin: 0 0 1rem 0;">※ (user_name) 은 여러분의 컴퓨터 이름입니다. ※</p>
+								<ul class="howto">	
+									<li>windows :C:/Users/(user_name)/AppData/Local/Google/Chrome/User Data/Default/History</li>
+									<li>linux : ~/.config/google-chrome/Default/History</li>
+									<li>MAC OS : ~/Library/Application Support/Google/Chrome/Default/History</li>
+								</ul>
+							</p>
+							<form id='FILE_FORM' method="POST" enctype="multipart/form-data">
+								<label for="file">Choose file to upload</label><br>
+								<input type="file" id="FILE_TAG" name="FILE_TAG"><br>
+								<input type="submit" value="upload" style="float: right;">
+							</form>
+						</article>
+					</div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script src="javascripts/main_jquery.min.js"></script>
+			<script src="javascripts/util.js"></script>
+			<script src="javascripts/main.js"></script>
+	</body>
+</html>

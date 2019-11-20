@@ -174,6 +174,52 @@ mark {
 		width: 60%;
 	}
 
+	input[type="submit"],
+	input[type="button"],
+	button,
+	.button {
+		appearance: none;
+		background-color: transparent;
+		border-radius: 4px;
+		border: 0;
+		box-shadow: inset 0 0 0 1px rgba(144, 144, 144, 0.5);
+		color: white !important;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 0.9em;
+		font-weight: 400;
+		height: 2.75em;
+		letter-spacing: 0.125em;
+		line-height: 2.75em;
+		padding: 0 2em;
+		text-align: center;
+		text-decoration: none;
+		text-indent: 0.125em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+		input[type="submit"]:hover,
+		input[type="button"]:hover,
+		button:hover,
+		.button:hover {
+			background-color: rgba(144, 144, 144, 0.075);
+		}
+
+		input[type="submit"]:active,
+		input[type="button"]:active,
+		button:active,
+		.button:active {
+			background-color: rgba(144, 144, 144, 0.2);
+		}
+
+		input[type="submit"].icon:before,
+		input[type="button"].icon:before,
+		button.icon:before,
+		.button.icon:before {
+			margin-right: 0.5em;
+		}
+
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
 		font-weight: 600;
@@ -410,6 +456,10 @@ mark {
 		dl dd {
 			margin-left: 2rem;
 		}
+	
+	.howto{
+		margin: -1rem 0 1rem 0;
+	}
 
 /* BG */
 
