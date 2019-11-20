@@ -31,25 +31,25 @@ tokenizer = RegexTokenizer()
 new_token_list = tokenizer.tokenize(user_input_word)
 
 # token_list를 영어버젼도!
-new_token_list = token_word_judge.google_translator(new_token_list)
+final_token_list = token_word_judge.google_translator(new_token_list)
 
 # 0.1초 이거만하면
-print(new_token_list)
+# print(new_token_list)
 
-final_token_list = []
+# final_token_list = []
 
-# 명사만 추출하는 code
-for new_token in new_token_list:
-    # str인 것은 모두 영어이거나, 한글 단독 명사다.
-    if type(token_word_judge.token_judge_en_lower_ko_noun(new_token)) == str:
-        final_token_list.append(token_word_judge.token_judge_en_lower_ko_noun(new_token))
-    # list 인 것은 명사가 여러개인 것이 list로 묶인다.
-    elif type(token_word_judge.token_judge_en_lower_ko_noun(new_token)) == list:
-        for i in token_word_judge.token_judge_en_lower_ko_noun(new_token):
-            final_token_list.append(i)
-    # 글자가 아닌것은 None 처리
-    elif token_word_judge.token_judge_en_lower_ko_noun(new_token) == None:
-        pass
+# # 명사만 추출하는 code
+# for new_token in new_token_list:
+#     # str인 것은 모두 영어이거나, 한글 단독 명사다.
+#     if type(token_word_judge.token_judge_en_lower_ko_noun(new_token)) == str:
+#         final_token_list.append(token_word_judge.token_judge_en_lower_ko_noun(new_token))
+#     # list 인 것은 명사가 여러개인 것이 list로 묶인다.
+#     elif type(token_word_judge.token_judge_en_lower_ko_noun(new_token)) == list:
+#         for i in token_word_judge.token_judge_en_lower_ko_noun(new_token):
+#             final_token_list.append(i)
+#     # 글자가 아닌것은 None 처리
+#     elif token_word_judge.token_judge_en_lower_ko_noun(new_token) == None:
+#         pass
 
 # 한글도 명사만 존재하는 list
 print(final_token_list)
@@ -95,21 +95,24 @@ def print_None(input_word):
     # print(data)
     print(json.dumps(data,ensure_ascii=False))
 
+# step마다 단어가 겹치는 것이 검색이 안될 때! count_number가 0이면 검색결과 없음.
 count_number = 0
 for i in range(len(final_token_list)+1):
     # 단어가 모두 있는 경우 json으로 출력
     if len(result_token_all) != 0:
         result_change_dict = print_json(result_token_all)
-        if i  == 0:
-            column = 'all data'
-            result_change_dict_all_data = {'all data' : result_change_dict}
-            count_number +=1
-            print(json.dumps(result_change_dict_all_data,ensure_ascii=False))
-        else:
+        # 첫 시작이 아닐경우
+        if i != 0 :
             column = str(i) +" missed count's data"
             result_change_dict_missed_data = {str(i) +" missed count's data" : result_change_dict}
             count_number +=1
             print(json.dumps(result_change_dict_missed_data,ensure_ascii=False))
+        # 첫 시작인 경우
+        else:
+            column = 'all data'
+            result_change_dict_all_data = {'all data' : result_change_dict}
+            count_number +=1
+            print(json.dumps(result_change_dict_all_data,ensure_ascii=False))
             
     # 단어가 모두 있는 경우가 아니라면 
     elif len(result_token_all) == 0:
