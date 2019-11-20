@@ -12,17 +12,17 @@ import getpass
 import shutil
 import token_word_judge
 # user들의 directory list
-user_dir_list = os.listdir()
+user_dir_list = os.listdir("../crawling_history/database")
 user_only_dir_list = token_word_judge.search(user_dir_list)
 # print(user_only_dir_list)
 # user dir마다 반복
 for user_dir in user_only_dir_list:
     # print(user_dir)
     # history_user_dir_address
-    history_user_dir_address = user_dir+ "/History_" + user_dir + '.db'
+    history_user_dir_address = "../crawling_history/database/" + user_dir+ "/History_" + user_dir + '.db'
 
     # 1은 모든 user의 History 읽는 conn / 2는 각각의 user의 history 읽는 conn
-    conn1 = sqlite3.connect("./History_all_users.db")
+    conn1 = sqlite3.connect("../crawling_history/database/History_all_users.db")
     conn2 = sqlite3.connect(history_user_dir_address)
     
     # cursor 생성

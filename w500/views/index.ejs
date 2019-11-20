@@ -29,7 +29,11 @@
 						<nav>
 							<ul>
 								<li><a href="#intro">Intro</a></li>
-								<li><a href="/auth/google">Start</a></li>
+								<% 	if(auth){ %>
+										<li><a href="/#start">Start</a></li>
+								<%	} else { %>
+										<li><a href="/auth/google">Start</a></li>
+								<%	} %>
 							</ul>
 						</nav>
 					</header>

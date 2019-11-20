@@ -14,7 +14,7 @@
 				<span class="icon solid major fa-cloud"></span>
 				<h1>Keyword <strong>Search</strong> Result</h1>
 				<form id="search" method="GET">
-					<input type="text" id="search_text" name="keyword" placeholder="Input Keyword" required>
+					<input type="text" id="search_text" name="keyword" placeholder="<%=search%>" required>
 					<input type="submit">
 					<a href="/" class="button">Home</a>
 				</form>
@@ -25,22 +25,23 @@
 		<section id="main">
 			
 			<!-- EJS -->
-			<%	for(var res in data){ %>
-					<div class="count">
-						<header>
-							<h2><% res['count']%> </h2> 
-						</header>
-						<% for(var ele in res['list']) { %>
-							<div class="result">
-								<header class="major">
-									<h2><% ele['title'] %></h2>
-									<!-- <a href= ele['url'] > </a> -->
-								</header>
-								<p><% ele['url'] %></p>
-								<p><% ele['user_count'] 명이 ele['visit_count'] 번 방문하였습니다.%></p>
-							</div>
-						<% } %>
-					</div>
+			<%	for(var i = 0; i < data.length; i++){ %>
+				<div class="count">
+					<% if(data[0]['count'] != -1) {%>
+						<p><%= data[i]['count']%> 개의 토큰 제외 결과</p> 
+					<% } %>
+					<% for(var j = 0; j < data[i]['list'].length; j++) { %>
+						<div class="result">
+							<header class="major">
+								<p class="result_title"><a href="<%=data[i]['list'][j]['url']%>" class="result_href"><%=data[i]['list'][j]['title'] %></a></p>
+							</header>
+								<p class="result_url"><%= data[i]['list'][j]['url'] %></p>
+							<% if(data[0]['count'] != -1) {%>
+								<p class="result_count"><%= data[i]['list'][j]['user_count']%> 명이 <%= data[i]['list'][j]['visit_count'] %> 번 방문하였습니다.</p>
+							<% } %>
+						</div>
+					<% } %>
+				</div>
 			<%	} %>
 
 		</section>

@@ -22,7 +22,11 @@ const upload = multer({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { error: false });
+  console.log(req.session.passport);
+  if(req.session.passport)
+    res.render('index', { auth: true, error: false });
+  else
+    res.render('index', { auth: false, error: false });
 });
 
 router.post('/', auth.ensureAuthenticated, upload.array('FILE_TAG', 1), function(req, res, next) {
@@ -39,7 +43,7 @@ router.post('/', auth.ensureAuthenticated, upload.array('FILE_TAG', 1), function
     res.redirect('/search');
   }
   else
-    res.render('index', { error: true });
+    res.render('index', { auth: false, error: true });
 });
 
 module.exports = router;

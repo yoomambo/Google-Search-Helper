@@ -12,7 +12,7 @@ router.get('/', passport.ensureAuthenticated, function(req, res, next) {
   var keyword = req.query.keyword;
 
   if(!keyword){
-    res.render('search', { data: { } });
+    res.render('search', { search: "input keyword", data: { } });
   }
   else{
     var options = {
@@ -26,7 +26,7 @@ router.get('/', passport.ensureAuthenticated, function(req, res, next) {
 
     sync.fiber(function(){
       var results = sync.await(PythonShell.run( __dirname + "../../../crawling_history/database/keyword_tokenize.py", options, sync.defer()));
-      res.render('search', { data: results[0] });
+      res.render('search', { search: keyword, data: results });
     });
   }
 });

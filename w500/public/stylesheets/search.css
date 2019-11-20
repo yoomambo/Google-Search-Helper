@@ -52,9 +52,6 @@ input, select, textarea {
 		background: #fff;
 		height: 100%;
 		margin: 0;
-	}
-
-	body, input, select, textarea {
 		color: #666;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
@@ -367,6 +364,17 @@ input, select, textarea {
 
 /* Button */
 
+	input[type="text"]{
+		color: white;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 16pt;
+		font-weight: 300;
+		line-height: 1.65em;
+	}
+		input[type="text"]::placeholder{
+			color: white;
+		}
+
 	input[type="submit"],
 	input[type="button"],
 	button,
@@ -421,8 +429,47 @@ input, select, textarea {
 		padding-bottom: 100px;
 	}
 
+	.count {
+		margin-top: 2rem;
+	}
+		.count:nth-child(1)::before{
+			height: 0;
+		}
+		.count::before{
+			background: rgba(144, 144, 144, 0.5);
+			content: '';
+			display: inline-block;
+			height: 2px;
+			margin-top: 0.2rem;
+			margin-bottom: 0.2rem;
+			width: 100%;
+		}
+		.count > p{
+			font: 1rem sans-serif;
+		}
+
 	.result {
 		margin-top: 5rem;
+	}
+
+	.result_title{
+		font: 1.5rem sans-serif;
+		margin-bottom: -1rem;
+	}
+
+	.result_href{
+		color: blue;
+		border-bottom: 0;
+		text-decoration: none;
+		margin-top: 0;
+	}
+
+	.result_url{
+		color: green;
+	}
+
+	.result_count{
+		font: 1.2rem sans-serif;
 	}
 
 /* Header */
