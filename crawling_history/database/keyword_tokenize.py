@@ -21,24 +21,20 @@ import json
 user_name = sys.argv[1]
 
 # user가 word input
-user_input_word = input('여기에 단어를 입력하세요 : ')
-input_number = input('여기에 숫자를 입력하세요 : ')
+user_input_word = sys.argv[2]
+
+# input_number = input('여기에 숫자를 입력하세요 : ')
 # RegexTokenizer's object 생성
 tokenizer = RegexTokenizer()
 
 # input한 word token화
 new_token_list = tokenizer.tokenize(user_input_word)
-"""
-이 부분은 상의해보고 결정
 
 # token_list를 영어버젼도!
-# trans_token_list = token_word_judge.google_translator(token_list)
+new_token_list = token_word_judge.google_translator(new_token_list)
 
-# trans전, 후 단어들 list화
-# new_token_list = token_list + trans_token_list
-"""
 # 0.1초 이거만하면
-# print(new_token_list)
+print(new_token_list)
 
 final_token_list = []
 
@@ -99,24 +95,30 @@ def print_None(input_word):
     # print(data)
     print(json.dumps(data,ensure_ascii=False))
 
-for i in range(int(input_number)+1):
+count_number = 0
+for i in range(len(final_token_list)+1):
     # 단어가 모두 있는 경우 json으로 출력
-    if len(result_token_all)!= 0:
+    if len(result_token_all) != 0:
         result_change_dict = print_json(result_token_all)
         if i  == 0:
-            print('all data : ')
-            print(json.dumps(result_change_dict,ensure_ascii=False))
+            column = 'all data'
+            result_change_dict_all_data = {'all data' : result_change_dict}
+            count_number +=1
+            print(json.dumps(result_change_dict_all_data,ensure_ascii=False))
         else:
-            print(str(i) +" missed count's data : ")
-            print(json.dumps(result_change_dict,ensure_ascii=False))
+            column = str(i) +" missed count's data"
+            result_change_dict_missed_data = {str(i) +" missed count's data" : result_change_dict}
+            count_number +=1
+            print(json.dumps(result_change_dict_missed_data,ensure_ascii=False))
             
     # 단어가 모두 있는 경우가 아니라면 
     elif len(result_token_all) == 0:
         # 만약 다음 단계로 넘어가는 list의 개수가 0개라면 그 전 list의 개수는 한개이므로, break
-        if len(final_token_list)-1 == 0:
-            print_None(user_input_word)
-            break
-    
+        if i == len(final_token_list):
+            if count_number == 0:
+                print_None(user_input_word)
+                break
+        
     c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-(i+1))+ " ORDER BY user_count asc")
     result_token_all = c1.fetchall()
     

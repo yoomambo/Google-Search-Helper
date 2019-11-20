@@ -159,6 +159,7 @@ def google_translator(input_word_list):
             word_list_result.append(t.translate(input_word).text)
         else:
             pass
+    word_list_result.extend(input_word_list)
 
     return word_list_result
 
