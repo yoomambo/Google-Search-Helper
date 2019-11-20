@@ -12,17 +12,20 @@ router.get('/', passport.ensureAuthenticated, function(req, res, next) {
   var keyword = req.query.keyword;
 
   if(!keyword){
-    res.render('search', { data: {}});
+    res.render('search', { data: { } });
   }
   else{
     var options = {
       mode: 'json',
       pythonOptions: ['-u'],
-      args: [keyword]
+      args: [ 
+        req.session.passport.user.displayName, 
+        '"' + keyword + '"'
+      ]
     }
 
     sync.fiber(function(){
-      var results = sync.await(PythonShell.run("./public/python/test.py", options, sync.defer()));
+      var results = sync.await(PythonShell.run( __dirname + "../../../crawling_history/database/keyword_tokenize.py", options, sync.defer()));
       res.render('search', { data: results[0] });
     });
   }

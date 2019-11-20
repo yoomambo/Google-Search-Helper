@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy({
     // asynchronous verification, for effect...
     process.nextTick(function () {
       var nickname = profile.displayName;
-      var dir = __dirname + '/../public/uploads/' + nickname;
+      var dir = __dirname + '/../../crawling_history/database/' + nickname;
       var options = {
           mode: 'json',
           pythonOptions: ['-u'],

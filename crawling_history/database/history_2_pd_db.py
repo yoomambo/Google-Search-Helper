@@ -21,7 +21,7 @@ import token_word_judge
 # print('현재 path : ', os.getcwd())
 
 # user들의 directory list
-user_dir_list = os.listdir()
+user_dir_list = os.listdir('../crawling_history/database')
 user_only_dir_list = token_word_judge.search(user_dir_list)
 # print(user_only_dir_list)
 # DB 한 줄씩 읽어들이기
@@ -53,10 +53,10 @@ def database_title_token(data_list):
 
 # user dir마다 반복
 for user_dir in user_only_dir_list:
-    # print('횟수')
+    # print(user_dir)
     # 1은 History 읽는 conn
-    conn1 = sqlite3.connect(user_dir+ "/History")
-    conn2 = sqlite3.connect(user_dir+ "/History_" + user_dir +'.db')
+    conn1 = sqlite3.connect('../crawling_history/database/' + user_dir+ "/History")
+    conn2 = sqlite3.connect('../crawling_history/database/' + user_dir+ "/History_" + user_dir +'.db')
 
     # cursor 생성
     c1 = conn1.cursor()

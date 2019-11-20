@@ -25,13 +25,22 @@
 		<section id="main">
 			
 			<!-- EJS -->
-			<%	for(var i = 0; i < data.length; i++){ %>
-				<div class="result">
-					<header class="major">
-						<h2><a href=<%=data[i]['url']%> > <%=data[i]['title']%></a></h2>
-					</header>
-					<p><%=data[i]['detail']%></p>
-				</div>
+			<%	for(var res in data){ %>
+					<div class="count">
+						<header>
+							<h2><% res['count']%> </h2> 
+						</header>
+						<% for(var ele in res['list']) { %>
+							<div class="result">
+								<header class="major">
+									<h2><% ele['title'] %></h2>
+									<!-- <a href= ele['url'] > </a> -->
+								</header>
+								<p><% ele['url'] %></p>
+								<p><% ele['user_count'] 명이 ele['visit_count'] 번 방문하였습니다.%></p>
+							</div>
+						<% } %>
+					</div>
 			<%	} %>
 
 		</section>
