@@ -106,7 +106,7 @@ def token_judge_en_lower_ko_noun(token):
     if judgement == 'en':
         return token.lower()
     elif judgement == 'ko':
-        return okt.nouns(token)
+        return okt.nouns(token)[0]
     # judgement 가 영어 한글이 아닐 경우
     elif judgement == 0:
         return None
