@@ -1,5 +1,6 @@
 var express = require('express');
 var sync = require('synchronize');
+var path = require('path');
 var passport = require('../auth/index.js');
 var router = express.Router();
 let { PythonShell } = require('python-shell');
@@ -25,7 +26,7 @@ router.get('/', passport.ensureAuthenticated, function(req, res, next) {
     }
 
     sync.fiber(function(){
-      var results = sync.await(PythonShell.run( __dirname + "../../../crawling_history/database/keyword_tokenize.py", options, sync.defer()));
+     var results = sync.await(PythonShell.run( path.join(__dirname + "/../../crawling_history/database/keyword_tokenize.py"), options, sync.defer()));
       res.render('search', { search: keyword, data: results });
     });
   }

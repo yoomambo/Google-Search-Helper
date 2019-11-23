@@ -27,7 +27,7 @@
 			<!-- EJS -->
 			<%	for(var i = 0; i < data.length; i++){ %>
 				<div class="count">
-					<% if(data[0]['count'] != -1) {%>
+					<% if(data[i]['count'] != -1) {%>
 						<p><%= data[i]['count']%> 개의 토큰 제외 결과</p> 
 					<% } %>
 					<% for(var j = 0; j < data[i]['list'].length; j++) { %>
