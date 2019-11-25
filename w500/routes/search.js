@@ -20,7 +20,7 @@ router.get('/', passport.ensureAuthenticated, function(req, res, next) {
       mode: 'json',
       pythonOptions: ['-u'],
       args: [ 
-        req.session.passport.user.displayName, 
+        req.session.passport.user.id, 
         '"' + keyword + '"'
       ]
     }
