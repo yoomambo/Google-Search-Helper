@@ -33,8 +33,10 @@ for user_dir in user_only_dir_list:
     c1.execute("CREATE TABLE IF NOT EXISTS urls(url text, title text, visit_count INTEGER, user_count INTEGER DEFAULT 1)") 
     c1.execute('select url, title, visit_count from urls')
     # 경량화를 위해 url, title, visit_count만 추출
-    c2.execute('select url, title, visit_count from urls')
-
+    try:
+        c2.execute('select url, title, visit_count from urls')
+    except:
+        break
     # History_all_users_history의 data ->list로 fetch
     history_all_users_history_data_list = c1.fetchall()
 
