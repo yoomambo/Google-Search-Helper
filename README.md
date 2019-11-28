@@ -1,6 +1,7 @@
 # SW-Festival (Google History 분석)
 <br>
 <br>
+
 ## Theme
 
 이 프로젝트는 client의 Google의 검색엔진, chrome history 를 분석, 다른 client의 history를 비교해서<br>
@@ -16,8 +17,9 @@ client가 <strong>입력한 keyword에 대하여 검색하지 못한 url을 보�
 
 구글은 검색엔진으로써 <strong>78.78%</strong> 의 시장점유율을 보이고 있습니다. <br>
 이는 7% 로 두번째 점유율을 가지고 있는 bing 과 비교하여 보면 10 배라는 놀라운 차이를 보입니다 . <br>
-이로써 우리는 이용자가 많은 Google 의 검색엔진을 기본으로 사용하고있는 웹 브라우저 , Chrome 의 history를<br>
-분석에 사용한다면 보편적인 데이터를 얻기에 충분하다고 생각하였습니다. <br>
+이로써 우리는 이용자가 많은 Google 의 검색엔진을 기본으로 사용하고있는 웹 브라우저 , <br>
+Chrome 의 history를 분석에 사용한다면 보편적인 데이터를 얻기에 충분하다고 생각하였습니다. <br>
+<br>
 <br>
 
 ## settings
@@ -43,6 +45,9 @@ npm과 nodejs는 항상 최신 버젼을 유지합니다.<br>
 nodejs == 6.0.0
 npm == 3.8.6
 
+<br>
+<br>
+
 ## How to use
 
 ~~~
@@ -56,6 +61,9 @@ npm start
 4. OS에 따라 주어진 경로에서 chrome의 History 데이터베이스 파일을 send
 5. 검색어 창에 내가 입력하고 싶은 keyword 입력
 6. 출력된 결과 확인
+
+<br>
+<br>
 
 ## benefit
 이러한 웹페이지를 제공함으로써, 여러 방면으로 쓰일 수 있습니다.
