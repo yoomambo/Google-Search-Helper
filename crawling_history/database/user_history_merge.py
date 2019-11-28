@@ -36,7 +36,7 @@ for user_dir in user_only_dir_list:
     try:
         c2.execute('select url, title, visit_count from urls')
     except:
-        break
+        continue
     # History_all_users_history의 data ->list로 fetch
     history_all_users_history_data_list = c1.fetchall()
 

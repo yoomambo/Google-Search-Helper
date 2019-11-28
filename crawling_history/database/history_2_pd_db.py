@@ -66,7 +66,7 @@ for user_dir in user_only_dir_list:
         # update History 데이터 조회
         c1.execute('SELECT id, url, title, visit_count, last_visit_time FROM urls')
     except:
-        break
+        continue
     # user_history_update_data_list는 History 에서 가져온 data들
     user_history_update_data_list = c1.fetchall()
 
