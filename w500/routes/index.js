@@ -7,7 +7,7 @@ let { PythonShell } = require('python-shell');
 
 const storage = multer.diskStorage({ 
   destination(req, file, callback) {
-    var user = req.session.passport.user.displayName;
+    var user = req.session.passport.user.id;
     callback(null, __dirname + '/../../crawling_history/database/' + user);
   }, 
   filename(req, file, callback) {
