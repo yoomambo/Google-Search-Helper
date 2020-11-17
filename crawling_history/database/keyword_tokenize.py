@@ -73,7 +73,7 @@ for token in final_token_list:
 # 결과를 extract_urls table에 저장
 c1.executemany("INSERT INTO extract_urls(title, url, user_count ,visit_count) VALUES (?,?,?,?)", result)
 # 우선 token이 두 개 이상 겹치는 단어를 보여준다.
-c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = " + str(len(final_token_list)) + " ORDER BY user_count DESC")
+c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = " + str(len(final_token_list)) + " ORDER BY user_count asc")
 # c1.execute("select * from extract_urls order by url")
 # token이 모두 겹친 것을 보여준다.
 result_token_all = c1.fetchall()
@@ -125,7 +125,7 @@ for i in range(len(final_token_list)+1):
                 print_None(user_input_word)
                 break
         
-    c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-(i+1))+ " ORDER BY user_count DESC")
+    c1.execute("select title, url , user_count, visit_count FROM extract_urls GROUP BY url having count(url) = "+ str(len(final_token_list)-(i+1))+ " ORDER BY user_count asc")
     result_token_all = c1.fetchall()
     
 # while True:

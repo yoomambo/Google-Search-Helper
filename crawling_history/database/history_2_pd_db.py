@@ -62,11 +62,10 @@ for user_dir in user_only_dir_list:
     # cursor 생성
     c1 = conn1.cursor()
     c2 = conn2.cursor()
-    try:
-        # update History 데이터 조회
-        c1.execute('SELECT id, url, title, visit_count, last_visit_time FROM urls')
-    except:
-        continue
+
+    # update History 데이터 조회
+    c1.execute('SELECT id, url, title, visit_count, last_visit_time FROM urls')
+
     # user_history_update_data_list는 History 에서 가져온 data들
     user_history_update_data_list = c1.fetchall()
 
@@ -74,7 +73,7 @@ for user_dir in user_only_dir_list:
     user_history_update_data_list_titletoken = database_title_token(user_history_update_data_list)
 
     # title token화 한것 DF에 넣기
-    user_history_update_df = pd.DataFrame(user_history_update_data_list,index = None, columns = ['id', 'url', 'title', 'visit_count', 'last_visit_time'])
+    user_history_update_df = pd.DataFrame(user_history_update_data_list_titletoken,index = None, columns = ['id', 'url', 'title', 'visit_count', 'last_visit_time'])
     
     # user_history_update_data_list token 진행한 DF output 출력
     # print(user_history_update_df.head())
