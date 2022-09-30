@@ -11,7 +11,7 @@ googletrans==2.4.0
 grpcio==1.25.0
 h5py==2.10.0
 idna==2.8
-joblib==0.14.0
+joblib==1.2.0
 JPype1==0.6.2
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
